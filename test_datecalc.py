@@ -1,5 +1,5 @@
 from datecalc import duration, when
-from datetime import datetime
+from datetime import date, datetime
 
 
 def test_zero_duration():
