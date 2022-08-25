@@ -23,6 +23,7 @@ col1.markdown(f'The difference is {diff} days!')
 start_date2 = col2.date_input('Start Date')
 duration = col2.number_input('Duration', min_value=0, max_value=1000000000, step=1)
 
+# try except block to handle OverflowError
 try:
     end_date2 = when(start_date2, duration)
 
