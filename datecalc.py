@@ -13,4 +13,8 @@ def duration(start_date, end_date):
 
 # calculates a new date, by adding an amount of days to a given date
 def when(start_date, days_between):
-    return start_date + timedelta(days=days_between)
+    # try except block for OverflowError
+    try:
+        return start_date + timedelta(days=days_between)
+    except OverflowError:
+        return "a date out of range for this calculator! Please try a new combination"

@@ -1,6 +1,7 @@
 # import libraries
 import streamlit as st
 from datecalc import duration, when
+from datetime import datetime
 
 # select widescreen layout and elect page title
 st.set_page_config(page_title='Date Calculator', layout='wide')
@@ -23,14 +24,16 @@ col1.markdown(f'The difference is {diff} days!')
 start_date2 = col2.date_input('Start Date')
 duration = col2.number_input('Duration', min_value=0, max_value=1000000000, step=1)
 
-# try except block to handle OverflowError
-try:
-    end_date2 = when(start_date2, duration)
 
+end_date2 = when(start_date2, duration)
+
+# check if end_date2 is a date
+if isinstance(end_date2, datetime):
     # reformat date
     end_date2 = end_date2.strftime('%d %b %Y')
-
+    #display message
     col2.markdown(f'{duration} days after your start date, it will be {end_date2}')
 
-except OverflowError:
-    col2.markdown("Year can not go beyond 9999! Please enter a lower duration and/or change your start date")
+else:
+    #display message
+    col2.markdown(f'{duration} days after your start date, it will be {end_date2}')
