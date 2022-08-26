@@ -85,3 +85,17 @@ def test_999999_day_when():
 
     # Assert
     assert actual_output == expected_output
+
+
+# test - a date out of range of datetime
+def test_out_of_range_day_when():
+    # Arrange
+    start_date = date.today()
+    days_between = 99999999
+    expected_output = "a date out of range for this calculator! Please try a new combination"
+
+    # Act
+    actual_output = when(start_date, days_between)
+
+    # Assert
+    assert actual_output == expected_output
